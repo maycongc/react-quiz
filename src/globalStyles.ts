@@ -8,9 +8,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: #333;
-    color: #fff;
+    background: #d4ebfc;
+    color: #222;
 
-    font: 400 62.5% 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
   }
 `;
