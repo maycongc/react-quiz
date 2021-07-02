@@ -1,38 +1,34 @@
-import { Button, TextField, Avatar } from '@material-ui/core';
+import { ReactNode } from 'react';
+import { Avatar } from '@material-ui/core';
 import QuestionAnswerRoundedIcon from '@material-ui/icons/QuestionAnswerRounded';
-import { FormEvent } from 'react';
-import { useHistory } from 'react-router-dom';
+import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
 
 import { SectionWrapper } from './styles';
 
-export function SectionElement(): JSX.Element {
-  const history = useHistory();
+type SectionElementProps = {
+  icon: string;
+  title: string;
+  description: string;
+  children: ReactNode;
+};
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-
-    history.push('/verification');
-  }
+export function SectionElement(props: SectionElementProps): JSX.Element {
+  const { icon, title, description, children } = props;
 
   return (
     <SectionWrapper>
       <div>
         <Avatar style={{ height: '60px', width: '60px' }}>
-          <QuestionAnswerRoundedIcon />
+          {icon === 'home' ? (
+            <QuestionAnswerRoundedIcon />
+          ) : (
+            <ErrorRoundedIcon />
+          )}
         </Avatar>
-        <h1>React Quiz</h1>
-        <p>Escolha quantas perguntas deseja responder!</p>
+        <h1>{title}</h1>
+        <p>{description}</p>
       </div>
-
-      <form onSubmit={handleSubmit}>
-        <TextField
-          type="number"
-          variant="outlined"
-          required
-          label="Quantidade"
-        />
-        <Button type="submit">Escolher</Button>
-      </form>
+      {children}
     </SectionWrapper>
   );
 }
