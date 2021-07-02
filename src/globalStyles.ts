@@ -15,4 +15,8 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     font-family: 'Roboto', sans-serif;
   }
+
+  h1, h2, h3, h4 {
+    font-family: 'Poppins';
+  }
 `;
