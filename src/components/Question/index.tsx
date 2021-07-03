@@ -42,9 +42,9 @@ export function Question(props: QuestionProps): JSX.Element {
       <section className="question-info">
         <div>
           <p>
-            <strong>Category: </strong>
+            Category:
             <br />
-            {category}
+            <strong>{category}</strong>
           </p>
           <p>
             Difficulty:

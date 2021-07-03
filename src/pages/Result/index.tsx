@@ -10,7 +10,14 @@ import illustrationImg from '../../assets/images/illustration4.svg';
 import { ResultWrapper, ArticleWrapper } from './styles';
 
 export function Result(): JSX.Element {
-  const { questions, answers, setQuestions, setAnswers } = useQuestionary();
+  const {
+    questions,
+    answers,
+    setQuestions,
+    setAnswers,
+    setQuantity,
+    setLoaded,
+  } = useQuestionary();
   const history = useHistory();
 
   const [result, setResult] = useState(0);
@@ -36,6 +43,8 @@ export function Result(): JSX.Element {
   function handleBackToHome() {
     setAnswers([]);
     setQuestions([]);
+    setQuantity(undefined);
+    setLoaded(false);
     history.push('/');
   }
 

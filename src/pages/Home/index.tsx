@@ -20,20 +20,6 @@ export function Home(): JSX.Element {
   const { setQuantity, setQuestions, setAnswers } = useQuestionary();
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-
-    if (questionsQuantity > 0) {
-      setQuantity(questionsQuantity);
-
-      history.push('/verification');
-    }
-  }
-
-  function handleLastResult() {
     const res = localStorage.getItem('rq-questionary');
     if (res) {
       const { answers, questions } = JSON.parse(res);
@@ -42,6 +28,21 @@ export function Home(): JSX.Element {
       setHasResult(true);
     }
 
+    setMounted(true);
+  }, []);
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    if (questionsQuantity > 0) {
+      setQuantity(questionsQuantity);
+      setQuestions([]);
+      setAnswers([]);
+      history.push('/verification');
+    }
+  }
+
+  function handleLastResult() {
     history.push('/result');
   }
 
