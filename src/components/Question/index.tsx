@@ -1,7 +1,6 @@
 import { Button } from '@material-ui/core';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { AnswerProps } from '../../contexts/QuestionaryContext';
 import { useQuestionary } from '../../hooks/useQuestionary';
 
 import { QuestionWrapper } from './styles';
@@ -18,24 +17,17 @@ export function Question(props: QuestionProps): JSX.Element {
   const { category, difficulty, options, questionText, index } = props;
 
   const { answers, setAnswers } = useQuestionary();
-  const [newAnswer, setNewAnswer] = useState<AnswerProps>();
+  const [answered, setAnswered] = useState(false);
 
   function handleChooseOption(option: string, questionIndex: number) {
-    setNewAnswer({ answer: option, questionIndex });
-  }
-
-  useEffect(() => {
-    if (!newAnswer) return;
-
     const newValues = [
-      ...answers.filter(
-        answer => answer.questionIndex !== newAnswer.questionIndex,
-      ),
-      newAnswer,
+      ...answers.filter(answer => answer.questionIndex !== questionIndex),
+      { answer: option, questionIndex },
     ];
 
     setAnswers(newValues);
-  }, [newAnswer]);
+    setAnswered(true);
+  }
 
   return (
     <QuestionWrapper>
@@ -60,7 +52,7 @@ export function Question(props: QuestionProps): JSX.Element {
           <Button
             key={option}
             onClick={() => handleChooseOption(option, index)}
-            disabled={!!newAnswer}
+            disabled={answered}
           >
             {option}
           </Button>
