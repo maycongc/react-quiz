@@ -49,15 +49,15 @@ This project aims to create an application where the user can answer questions a
 
 ## ✅ Feature
 
-- [x] Ao acessar a página, o usuário deve escolher a quantidade de perguntas que deseja responder.
-- [x] Após escolher, deve aparecer uma página com dois botões, “Start” e “Cancel”.
-- [x] Ao selecionar “Cancel”, deve retornar para escolher a quantidade.
-- [x] Ao selecionar “Start” deve fazer requisição na URL disponibilizada, pegar as perguntas e a cada pergunta, deve exibir as respostas.
-- [x] O usuário deve escolher uma resposta e a cada resposta deve contabilizar quantidade de acertos e erros.
-- [x] Ao final, deve vir um relatório com a quantidade de acertos e erros e uma lista de cada questão e qual foi certo e qual foi errado.
-- [x] Nessa lista também deve aparecer a resposta escolhida e a resposta correta.
-- [x] A pontuação deve ser guardada em no localStorage.
-- [ ] Na primeira página e se houver um questionário salvo no localStorage, deve ter a possibilidade de rever o relatório.
+- [x] When accessing the page, the user must choose the number of questions he wants to answer.
+- [x] After choosing, a page should appear with two buttons, “Start” and “Cancel”.
+- [x] When selecting “Cancel”, it must return to choose the quantity.
+- [x] When selecting "Start" you must make a request at the URL provided, get the questions and for each question, you must display the answers.
+- [x] The user must choose an answer and for each answer must count the number of hits and errors.
+- [x] At the end, there should be a report with the number of successes and errors and a list of each question and which was right and which was wrong.
+- [x] In this list the chosen answer and the correct answer must also appear.
+- [x] Score must be stored in localStorage.
+- [x] On the first page and if there is a quiz saved in localStorage, there should be a possibility to review this report result.
 
 <br />
 
