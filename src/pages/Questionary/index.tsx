@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
+import { Toaster } from 'react-hot-toast';
+
+import { toastError } from '../../utils/toasts';
 
 import { LoaderAnimation } from '../../components/LoaderAnimation';
 import { Question } from '../../components/Question';
@@ -30,7 +33,8 @@ export function Questionary(): JSX.Element {
   }, [loaded]);
 
   function handleFinishQuestionary() {
-    if (quantity !== answers.length) return;
+    if (quantity !== answers.length)
+      return toastError('Error! Please answer all questions.');
 
     answers.sort((a, b) => a.questionIndex - b.questionIndex);
 
@@ -39,7 +43,7 @@ export function Questionary(): JSX.Element {
       JSON.stringify({ questions, answers }),
     );
 
-    history.push('/result');
+    return history.push('/result');
   }
 
   return (
@@ -72,6 +76,7 @@ export function Questionary(): JSX.Element {
       ) : (
         <LoaderAnimation componentDidMount={mounted} />
       )}
+      <Toaster />
     </>
   );
 }

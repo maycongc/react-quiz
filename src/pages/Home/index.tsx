@@ -1,6 +1,9 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, TextField } from '@material-ui/core';
+import { Toaster } from 'react-hot-toast';
+
+import { toastError } from '../../utils/toasts';
 
 import { SectionElement } from '../../components/SectionElement';
 import { LoaderAnimation } from '../../components/LoaderAnimation';
@@ -39,6 +42,8 @@ export function Home(): JSX.Element {
       setQuestions([]);
       setAnswers([]);
       history.push('/verification');
+    } else {
+      toastError('Error! Please enter a number above 0.');
     }
   }
 
@@ -81,6 +86,7 @@ export function Home(): JSX.Element {
       ) : (
         <LoaderAnimation componentDidMount={mounted} />
       )}
+      <Toaster />
     </>
   );
 }
