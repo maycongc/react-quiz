@@ -1,16 +1,13 @@
 import {
-  useEffect,
   useState,
   ReactNode,
   createContext,
   Dispatch,
   SetStateAction,
 } from 'react';
-import { api } from '../services/api';
 
-type QuestionsProps = {
+type QuestionProps = {
   category: string;
-  type: string;
   difficulty: string;
   question: string;
   correct_answer: string;
@@ -18,10 +15,22 @@ type QuestionsProps = {
 };
 
 export type QuestionaryContextProps = {
-  questions: QuestionsProps[];
-  setQuestions: Dispatch<SetStateAction<QuestionsProps[]>>;
+  questions: QuestionProps[];
+  setQuestions: Dispatch<SetStateAction<QuestionProps[]>>;
+
   quantity: number | undefined;
   setQuantity: Dispatch<SetStateAction<number | undefined>>;
+
+  loaded: boolean;
+  setLoaded: Dispatch<SetStateAction<boolean>>;
+
+  answers: AnswerProps[];
+  setAnswers: Dispatch<SetStateAction<AnswerProps[]>>;
+};
+
+export type AnswerProps = {
+  answer: string;
+  questionIndex: number;
 };
 
 type QuestionContextProviderProps = {
@@ -33,20 +42,23 @@ export const QuestionaryContext = createContext({} as QuestionaryContextProps);
 export function QuestionaryContextProvider({
   children,
 }: QuestionContextProviderProps): JSX.Element {
-  const [questions, setQuestions] = useState<QuestionsProps[]>([]);
+  const [questions, setQuestions] = useState<QuestionProps[]>([]);
   const [quantity, setQuantity] = useState<number>();
-
-  useEffect(() => {
-    if (quantity === undefined) return;
-
-    api.get(`api.php?amount=${quantity}`).then(res => {
-      setQuestions(res.data.results);
-    });
-  }, [quantity]);
+  const [loaded, setLoaded] = useState(false);
+  const [answers, setAnswers] = useState<AnswerProps[]>([]);
 
   return (
     <QuestionaryContext.Provider
-      value={{ questions, setQuestions, quantity, setQuantity }}
+      value={{
+        questions,
+        setQuestions,
+        quantity,
+        setQuantity,
+        loaded,
+        setLoaded,
+        answers,
+        setAnswers,
+      }}
     >
       {children}
     </QuestionaryContext.Provider>
