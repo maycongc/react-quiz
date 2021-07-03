@@ -6,20 +6,25 @@ import { LoaderAnimation } from '../../components/LoaderAnimation';
 import { Question } from '../../components/Question';
 
 import { useQuestionary } from '../../hooks/useQuestionary';
+import { useQuestion, ParsedQuestionsProps } from '../../hooks/useQuestion';
 
 import illustrationImg from '../../assets/images/illustration3.svg';
 import { QuestionaryWrapper } from './styles';
 
 export function Questionary(): JSX.Element {
   const [mounted, setMounted] = useState(false);
+  const [questions, setQuestions] = useState<ParsedQuestionsProps[]>([]);
 
   const history = useHistory();
-  const { quantity, questions, loaded, answers } = useQuestionary();
+  const { quantity, loaded, answers } = useQuestionary();
+  const { parsedQuestions } = useQuestion();
 
   useEffect(() => {
     if (!quantity) history.push('/');
     if (!loaded) return;
-    if (questions.length === 0) history.push('/');
+    // if (questions.length === 0) history.push('/');
+
+    setQuestions(parsedQuestions);
 
     setMounted(true);
   }, [loaded]);
@@ -47,22 +52,13 @@ export function Questionary(): JSX.Element {
 
           <section className="questions">
             {questions.map((question, index) => {
-              const options = [
-                question.correct_answer,
-                ...question.incorrect_answers,
-              ].sort(() => Math.floor(Math.random() * 10) - 5);
-
-              // console.log(question.correct_answer);
-              // console.log(question.incorrect_answers);
-              // console.log(questions);
-
               return (
                 <Question
                   key={question.question}
                   category={question.category}
                   difficulty={question.difficulty}
                   questionText={question.question}
-                  options={options}
+                  options={question.options}
                   index={index}
                 />
               );
