@@ -18,13 +18,16 @@ export function SectionElement(props: SectionElementProps): JSX.Element {
   return (
     <SectionWrapper>
       <div>
-        <Avatar style={{ height: '60px', width: '60px' }}>
-          {icon === 'home' ? (
-            <QuestionAnswerRoundedIcon />
-          ) : (
-            <ErrorRoundedIcon />
-          )}
-        </Avatar>
+        <div>
+          <Avatar style={{ height: '60px', width: '60px' }}>
+            {icon === 'home' ? (
+              <QuestionAnswerRoundedIcon />
+            ) : (
+              <ErrorRoundedIcon />
+            )}
+          </Avatar>
+        </div>
+
         <h1>{title}</h1>
         <p>{description}</p>
       </div>

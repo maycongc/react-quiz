@@ -7,14 +7,15 @@ export const SectionWrapper = styled.section`
   justify-content: space-around;
 
   width: fit-content;
-  height: 100%;
+  height: fit-content;
   min-width: 300px;
-  max-height: 380px;
 
   background: #f0f0f0f9;
 
   border: 1px solid #03d3fc;
   border-radius: 8px;
+
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 
   padding: 20px 25px;
 
@@ -24,11 +25,13 @@ export const SectionWrapper = styled.section`
     align-items: center;
 
     text-align: center;
-    gap: 15px;
+    column-gap: 15px;
+    row-gap: 25px;
 
     .MuiAvatar-circle {
       background: #d4ebfc;
       border: 1px solid #03d3fc;
+      margin-top: 10px;
 
       svg {
         width: 40px;
@@ -43,7 +46,7 @@ export const SectionWrapper = styled.section`
 
     p {
       width: 100%;
-      max-width: 250px;
+      max-width: 200px;
       font-size: 1.2rem;
     }
   }
@@ -53,7 +56,7 @@ export const SectionWrapper = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin: 15px 0;
     gap: 20px;
 
     input {
