@@ -75,7 +75,8 @@ export const ResultWrapper = styled.div`
 
     div {
       height: fit-content;
-      margin: 20px;
+      width: 100%;
+      padding: 20px;
     }
   }
 `;
