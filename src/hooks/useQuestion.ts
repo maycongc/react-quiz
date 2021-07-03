@@ -14,14 +14,14 @@ export function useQuestion(): {
   const { questions } = useQuestionary();
   const parsedQuestions: ParsedQuestionsProps[] = [];
 
-  for (let i = 0; i < questions.length; i += 1) {
+  questions.forEach(q => {
     const {
       category,
       difficulty,
       correct_answer,
       incorrect_answers,
       question,
-    } = questions[i];
+    } = q;
 
     const options = [correct_answer, ...incorrect_answers].sort(
       () => Math.floor(Math.random() * 10) - 5,
@@ -34,7 +34,7 @@ export function useQuestion(): {
       correct_answer,
       options,
     });
-  }
+  });
 
   return {
     parsedQuestions,
