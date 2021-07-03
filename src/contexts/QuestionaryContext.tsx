@@ -28,7 +28,7 @@ export type QuestionaryContextProps = {
   setAnswers: Dispatch<SetStateAction<AnswerProps[]>>;
 };
 
-export type AnswerProps = {
+type AnswerProps = {
   answer: string;
   questionIndex: number;
 };
