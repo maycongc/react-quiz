@@ -11,11 +11,13 @@ import { api } from '../../services/api';
 
 import illustrationImg from '../../assets/images/illustration2.svg';
 import { VerificationWrapper } from './styles';
+import { useQuestion } from '../../hooks/useQuestion';
 
 export function Verification(): JSX.Element {
   const [mounted, setMounted] = useState(false);
 
   const { quantity, setQuantity, setQuestions, setLoaded } = useQuestionary();
+
   const history = useHistory();
 
   useEffect(() => {
@@ -26,7 +28,9 @@ export function Verification(): JSX.Element {
 
   function handleStartButton() {
     api.get(`api.php?amount=${quantity}`).then(res => {
-      setQuestions(res.data.results);
+      const { parsedQuestions } = useQuestion(res.data.results);
+
+      setQuestions(parsedQuestions);
       setLoaded(true);
     });
 

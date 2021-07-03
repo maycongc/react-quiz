@@ -9,25 +9,20 @@ import { LoaderAnimation } from '../../components/LoaderAnimation';
 import { Question } from '../../components/Question';
 
 import { useQuestionary } from '../../hooks/useQuestionary';
-import { useQuestion, ParsedQuestionsProps } from '../../hooks/useQuestion';
 
 import illustrationImg from '../../assets/images/illustration3.svg';
 import { QuestionaryWrapper } from './styles';
 
 export function Questionary(): JSX.Element {
   const [mounted, setMounted] = useState(false);
-  const [questions, setQuestions] = useState<ParsedQuestionsProps[]>([]);
 
   const history = useHistory();
-  const { quantity, loaded, answers } = useQuestionary();
-  const { parsedQuestions } = useQuestion();
+  const { quantity, loaded, answers, questions } = useQuestionary();
 
   useEffect(() => {
     if (!quantity) history.push('/');
     if (!loaded) return;
     // if (questions.length === 0) history.push('/');
-
-    setQuestions(parsedQuestions);
 
     setMounted(true);
   }, [loaded]);

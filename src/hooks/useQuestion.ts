@@ -1,18 +1,17 @@
-import { useQuestionary } from './useQuestionary';
+import { QuestionProps } from '../contexts/QuestionaryContext';
 
-export type ParsedQuestionsProps = {
+type ApiQuestionProps = {
   category: string;
   difficulty: string;
   question: string;
   correct_answer: string;
-  options: string[];
+  incorrect_answers: string[];
 };
 
-export function useQuestion(): {
-  parsedQuestions: ParsedQuestionsProps[];
+export function useQuestion(questions: ApiQuestionProps[]): {
+  parsedQuestions: QuestionProps[];
 } {
-  const { questions } = useQuestionary();
-  const parsedQuestions: ParsedQuestionsProps[] = [];
+  const parsedQuestions: QuestionProps[] = [];
 
   questions.forEach(q => {
     const {
@@ -36,7 +35,5 @@ export function useQuestion(): {
     });
   });
 
-  return {
-    parsedQuestions,
-  };
+  return { parsedQuestions };
 }
