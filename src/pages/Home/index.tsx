@@ -14,9 +14,10 @@ import { HomeWrapper } from './styles';
 export function Home(): JSX.Element {
   const [mounted, setMounted] = useState(false);
   const [questionsQuantity, setQuestionsQuantity] = useState<number>(0);
+  const [hasResult, setHasResult] = useState(false);
 
   const history = useHistory();
-  const { setQuantity } = useQuestionary();
+  const { setQuantity, setQuestions, setAnswers } = useQuestionary();
 
   useEffect(() => {
     setMounted(true);
@@ -24,9 +25,24 @@ export function Home(): JSX.Element {
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    setQuantity(questionsQuantity);
 
-    history.push('/verification');
+    if (questionsQuantity > 0) {
+      setQuantity(questionsQuantity);
+
+      history.push('/verification');
+    }
+  }
+
+  function handleLastResult() {
+    const res = localStorage.getItem('rq-questionary');
+    if (res) {
+      const { answers, questions } = JSON.parse(res);
+      setQuestions(questions);
+      setAnswers(answers);
+      setHasResult(true);
+    }
+
+    history.push('/result');
   }
 
   return (
@@ -39,21 +55,26 @@ export function Home(): JSX.Element {
           <SectionElement
             icon="home"
             title="React Quiz"
-            description="Escolha quantas perguntas deseja responder!"
+            description="Choose how many questions you want to answer!"
           >
             <form onSubmit={handleSubmit}>
               <TextField
                 type="number"
                 variant="outlined"
                 required
-                label="Quantidade"
+                label="Quantity"
                 onChange={event =>
                   setQuestionsQuantity(Number(event.target.value))
                 }
-                value={questionsQuantity}
               />
-              <Button type="submit">Escolher</Button>
+              <Button type="submit">Select</Button>
             </form>
+
+            {hasResult && (
+              <Button className="last-result" onClick={handleLastResult}>
+                Your last result
+              </Button>
+            )}
           </SectionElement>
         </HomeWrapper>
       ) : (

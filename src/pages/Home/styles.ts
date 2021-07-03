@@ -17,4 +17,15 @@ export const HomeWrapper = styled.main`
       width: 600px;
     }
   }
+
+  .last-result {
+    background: #28bf56;
+    color: #fff;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #28bf56;
+      filter: brightness(0.86);
+    }
+  }
 `;
