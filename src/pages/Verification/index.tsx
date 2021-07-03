@@ -7,14 +7,15 @@ import { SectionElement } from '../../components/SectionElement';
 
 import { useQuestionary } from '../../hooks/useQuestionary';
 
-import illustration2Img from '../../assets/images/illustration2.svg';
+import { api } from '../../services/api';
 
+import illustrationImg from '../../assets/images/illustration2.svg';
 import { VerificationWrapper } from './styles';
 
 export function Verification(): JSX.Element {
   const [mounted, setMounted] = useState(false);
 
-  const { quantity, setQuantity, setQuestions } = useQuestionary();
+  const { quantity, setQuantity, setQuestions, setLoaded } = useQuestionary();
   const history = useHistory();
 
   useEffect(() => {
@@ -23,9 +24,17 @@ export function Verification(): JSX.Element {
     setMounted(true);
   }, [quantity]);
 
+  function handleStartButton() {
+    api.get(`api.php?amount=${quantity}`).then(res => {
+      setQuestions(res.data.results);
+      setLoaded(true);
+    });
+
+    history.push('/questionary');
+  }
+
   function handleCancelButton() {
     setQuantity(undefined);
-    setQuestions([]);
     history.push('/');
   }
 
@@ -35,16 +44,16 @@ export function Verification(): JSX.Element {
         <VerificationWrapper>
           <SectionElement
             icon="danger"
-            title="Atenção"
-            description={`Deseja iniciar um questionário com ${quantity} questões?`}
+            title="Attention!"
+            description={`Do you want to start a ${quantity}-question quiz?`}
           >
             <div className="buttons">
-              <Button>Iniciar</Button>
-              <Button onClick={handleCancelButton}>Cancelar</Button>
+              <Button onClick={handleStartButton}>Start</Button>
+              <Button onClick={handleCancelButton}>Cancel</Button>
             </div>
           </SectionElement>
           <aside>
-            <img src={illustration2Img} alt="Imagem de ilustração" />
+            <img src={illustrationImg} alt="Imagem de ilustração" />
           </aside>
         </VerificationWrapper>
       ) : (
