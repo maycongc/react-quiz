@@ -4,7 +4,7 @@
 
 <h3 align="center">
   Application preview:
-  <a href="https://askme.vercel.app/">
+  <a href="http://react-quiz-bice.vercel.app/">
     React Quiz
   </a>
 </h3>
