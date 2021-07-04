@@ -51,42 +51,36 @@ export function Home(): JSX.Element {
     history.push('/result');
   }
 
-  return (
-    <>
-      {mounted ? (
-        <HomeWrapper>
-          <aside>
-            <img src={illustrationImg} alt="Imagem de ilustração" />
-          </aside>
-          <SectionElement
-            icon="home"
-            title="React Quiz"
-            description="Choose how many questions you want to answer!"
-          >
-            <form onSubmit={handleSubmit}>
-              <TextField
-                type="number"
-                variant="outlined"
-                required
-                label="Quantity"
-                onChange={event =>
-                  setQuestionsQuantity(Number(event.target.value))
-                }
-              />
-              <Button type="submit">Select</Button>
-            </form>
+  if (!mounted) return <LoaderAnimation />;
 
-            {hasResult && (
-              <Button className="last-result" onClick={handleLastResult}>
-                Your last result
-              </Button>
-            )}
-          </SectionElement>
-        </HomeWrapper>
-      ) : (
-        <LoaderAnimation componentDidMount={mounted} />
-      )}
+  return (
+    <HomeWrapper>
+      <aside>
+        <img src={illustrationImg} alt="Imagem de ilustração" />
+      </aside>
+      <SectionElement
+        icon="home"
+        title="React Quiz"
+        description="Choose how many questions you want to answer!"
+      >
+        <form onSubmit={handleSubmit}>
+          <TextField
+            type="number"
+            variant="outlined"
+            required
+            label="Quantity"
+            onChange={event => setQuestionsQuantity(Number(event.target.value))}
+          />
+          <Button type="submit">Select</Button>
+        </form>
+
+        {hasResult && (
+          <Button className="last-result" onClick={handleLastResult}>
+            Your last result
+          </Button>
+        )}
+      </SectionElement>
       <Toaster />
-    </>
+    </HomeWrapper>
   );
 }

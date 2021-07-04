@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 
-type LoadingProps = {
-  componentDidMount: boolean;
-};
-
-export const LoadingWrapper = styled.div<LoadingProps>`
-  display: ${p => (p.componentDidMount ? 'none' : 'flex')};
+export const LoadingWrapper = styled.div`
+  display: flex;
   width: 100vw;
   height: 100vh;
   align-items: center;

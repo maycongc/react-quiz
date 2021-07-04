@@ -42,27 +42,23 @@ export function Verification(): JSX.Element {
     history.push('/');
   }
 
+  if (!mounted) return <LoaderAnimation />;
+
   return (
-    <>
-      {mounted ? (
-        <VerificationWrapper>
-          <SectionElement
-            icon="danger"
-            title="Attention!"
-            description={`Do you want to start a ${quantity}-question quiz?`}
-          >
-            <div className="buttons">
-              <Button onClick={handleStartButton}>Start</Button>
-              <Button onClick={handleCancelButton}>Cancel</Button>
-            </div>
-          </SectionElement>
-          <aside>
-            <img src={illustrationImg} alt="Imagem de ilustração" />
-          </aside>
-        </VerificationWrapper>
-      ) : (
-        <LoaderAnimation componentDidMount={mounted} />
-      )}
-    </>
+    <VerificationWrapper>
+      <SectionElement
+        icon="danger"
+        title="Attention!"
+        description={`Do you want to start a ${quantity}-question quiz?`}
+      >
+        <div className="buttons">
+          <Button onClick={handleStartButton}>Start</Button>
+          <Button onClick={handleCancelButton}>Cancel</Button>
+        </div>
+      </SectionElement>
+      <aside>
+        <img src={illustrationImg} alt="Imagem de ilustração" />
+      </aside>
+    </VerificationWrapper>
   );
 }

@@ -41,37 +41,33 @@ export function Questionary(): JSX.Element {
     return history.push('/result');
   }
 
+  if (!mounted) return <LoaderAnimation />;
+
   return (
-    <>
-      {mounted ? (
-        <QuestionaryWrapper>
-          <aside>
-            <img src={illustrationImg} alt="Imagem de ilustração" />
-          </aside>
+    <QuestionaryWrapper>
+      <aside>
+        <img src={illustrationImg} alt="Imagem de ilustração" />
+      </aside>
 
-          <section className="questions">
-            {questions.map((question, index) => {
-              return (
-                <Question
-                  key={question.question}
-                  category={question.category}
-                  difficulty={question.difficulty}
-                  questionText={question.question}
-                  options={question.options}
-                  index={index}
-                />
-              );
-            })}
+      <section className="questions">
+        {questions.map((question, index) => {
+          return (
+            <Question
+              key={question.question}
+              category={question.category}
+              difficulty={question.difficulty}
+              questionText={question.question}
+              options={question.options}
+              index={index}
+            />
+          );
+        })}
 
-            <Button className="finish" onClick={handleFinishQuestionary}>
-              Done
-            </Button>
-          </section>
-        </QuestionaryWrapper>
-      ) : (
-        <LoaderAnimation componentDidMount={mounted} />
-      )}
+        <Button className="finish" onClick={handleFinishQuestionary}>
+          Done
+        </Button>
+      </section>
       <Toaster />
-    </>
+    </QuestionaryWrapper>
   );
 }

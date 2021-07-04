@@ -48,58 +48,54 @@ export function Result(): JSX.Element {
     history.push('/');
   }
 
+  if (!mounted) return <LoaderAnimation />;
+
   return (
-    <>
-      {mounted ? (
-        <ResultWrapper>
-          <header className="result-header">
-            <Button onClick={handleBackToHome}>home page</Button>
-          </header>
-          <aside>
-            <img src={illustrationImg} alt="" />
-          </aside>
-          <section>
-            <h3>
-              Result: ({`${result}/${answers.length}`}){' - '}
-              {`${Math.round((result / answers.length) * 100)}% correct.`}
-            </h3>
-            <div>
-              {answers.map(a => {
-                const { answer, questionIndex } = a;
-                const { question, correct_answer } = questions[questionIndex];
+    <ResultWrapper>
+      <header className="result-header">
+        <Button onClick={handleBackToHome}>home page</Button>
+      </header>
+      <aside>
+        <img src={illustrationImg} alt="" />
+      </aside>
+      <section>
+        <h3>
+          Result: ({`${result}/${answers.length}`}){' - '}
+          {`${Math.round((result / answers.length) * 100)}% correct.`}
+        </h3>
+        <div>
+          {answers.map(a => {
+            const { answer, questionIndex } = a;
+            const { question, correct_answer } = questions[questionIndex];
 
-                const isCorrect = correct_answer === answer;
+            const isCorrect = correct_answer === answer;
 
-                return (
-                  <ArticleWrapper
-                    key={questionIndex}
-                    className="report-question"
-                    isCorrect={isCorrect}
-                  >
-                    <strong>{question}</strong>
-                    <div>
-                      <p>Correct answer:</p>
-                      <div className="correct-option">
-                        <p>{correct_answer}</p>
-                      </div>
+            return (
+              <ArticleWrapper
+                key={questionIndex}
+                className="report-question"
+                isCorrect={isCorrect}
+              >
+                <strong>{question}</strong>
+                <div>
+                  <p>Correct answer:</p>
+                  <div className="correct-option">
+                    <p>{correct_answer}</p>
+                  </div>
+                </div>
+                {!isCorrect && (
+                  <div>
+                    <p>Your answer:</p>
+                    <div className="answer">
+                      <p>{answer}</p>
                     </div>
-                    {!isCorrect && (
-                      <div>
-                        <p>Your answer:</p>
-                        <div className="answer">
-                          <p>{answer}</p>
-                        </div>
-                      </div>
-                    )}
-                  </ArticleWrapper>
-                );
-              })}
-            </div>
-          </section>
-        </ResultWrapper>
-      ) : (
-        <LoaderAnimation componentDidMount={mounted} />
-      )}
-    </>
+                  </div>
+                )}
+              </ArticleWrapper>
+            );
+          })}
+        </div>
+      </section>
+    </ResultWrapper>
   );
 }
