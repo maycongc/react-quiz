@@ -32,7 +32,8 @@ This project aims to create an application where the user can answer questions a
 - [React Context API](https://reactjs.org/docs/context.html)
 - [React Router DOM](https://reactrouter.com/web/guides/quick-start)
 - [Styled Components](https://styled-components.com/docs)
-<!-- - [React Hot Toast](https://react-hot-toast.com) -->
+- [Material UI](https://material-ui.com/)
+- [React Hot Toast](https://react-hot-toast.com)
 
 <br />
 
