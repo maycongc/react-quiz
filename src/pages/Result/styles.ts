@@ -94,7 +94,7 @@ export const ArticleWrapper = styled.article<ArticleWrapperProps>`
 
   padding: 20px 20px 5px 20px;
 
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   background: ${p => (p.isCorrect ? '#9BC53D' : '#f53940')};
   color: #fff;
@@ -124,7 +124,7 @@ export const ArticleWrapper = styled.article<ArticleWrapperProps>`
 
     .answer {
       border: 1px solid #f8f8f8;
-      color: #6f0a0d;
+      color: #ffc5c6;
     }
   }
 `;
