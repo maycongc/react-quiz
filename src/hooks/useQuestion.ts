@@ -1,3 +1,5 @@
+import he from 'he';
+
 import { QuestionProps } from '../contexts/QuestionaryContext';
 
 type ApiQuestionProps = {
@@ -22,15 +24,19 @@ export function useQuestion(questions: ApiQuestionProps[]): {
       question,
     } = q;
 
-    const options = [correct_answer, ...incorrect_answers].sort(
+    const parsedQuestion = he.decode(question);
+    const parsedCorrectAnswer = he.decode(correct_answer);
+    const parsedIncorrectAnswers = incorrect_answers.map(i => he.decode(i));
+
+    const options = [parsedCorrectAnswer, ...parsedIncorrectAnswers].sort(
       () => Math.floor(Math.random() * 10) - 5,
     );
 
     parsedQuestions.push({
       category,
       difficulty,
-      question,
-      correct_answer,
+      question: parsedQuestion,
+      correct_answer: parsedCorrectAnswer,
       options,
     });
   });
