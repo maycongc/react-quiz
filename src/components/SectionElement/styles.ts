@@ -8,16 +8,17 @@ export const SectionWrapper = styled.section`
 
   width: fit-content;
   height: fit-content;
-  min-width: 300px;
+  width: 100%;
+  max-width: 30rem;
 
   background: #f0f0f0f9;
 
   border: 1px solid #03d3fc;
-  border-radius: 8px;
+  border-radius: 0.8rem;
 
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
 
-  padding: 20px 25px;
+  padding: 2rem 2.5rem;
 
   div {
     display: flex;
@@ -25,29 +26,29 @@ export const SectionWrapper = styled.section`
     align-items: center;
 
     text-align: center;
-    column-gap: 15px;
-    row-gap: 25px;
+    column-gap: 1.5rem;
+    row-gap: 2.5rem;
 
     .MuiAvatar-circle {
       background: #d4ebfc;
       border: 1px solid #03d3fc;
-      margin-top: 10px;
+      margin-top: 1rem;
 
       svg {
-        width: 40px;
-        height: 40px;
+        width: 4rem;
+        height: 4rem;
         fill: #69a7f5;
       }
     }
 
     h1 {
-      font-size: 2.1rem;
+      font-size: 2.5rem;
     }
 
     p {
       width: 100%;
-      max-width: 200px;
-      font-size: 1.2rem;
+      max-width: 20rem;
+      font-size: 1.6rem;
     }
   }
 
@@ -56,32 +57,62 @@ export const SectionWrapper = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 15px 0;
-    gap: 20px;
+    margin: 1.5rem 0;
+    gap: 2rem;
+
+    div label {
+      font-size: 1.35rem;
+    }
 
     input {
-      height: 50px;
-      width: 150px;
-      border-radius: 8px;
-      padding: 0 15px;
+      height: 5rem;
+      width: 15rem;
+      border-radius: 0.8rem;
+      padding: 0 1.5rem;
     }
 
     button {
-      height: 40px;
+      height: 4rem;
       background: #03d3fc;
       border: 1px solid #03d3fc;
 
-      font: 500 1rem 'Roboto';
+      font: 500 1.28rem 'Roboto';
       color: #f8f8f8;
 
-      border-radius: 8px;
+      padding: 0 1.6rem;
+      border-radius: 0.8rem;
 
-      transition: filter 0.3s ease;
+      transition: all 0.3s ease;
 
       &:hover {
         background: #03d3fc;
         filter: brightness(0.85);
+        transform: scale(1.03);
       }
+    }
+  }
+
+  @media (min-width: 375px) {
+    div {
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      p {
+        font-size: 1.76rem;
+      }
+    }
+
+    form button {
+      font: 500 1.44rem 'Roboto';
+    }
+  }
+
+  @media (min-width: 700px) {
+    min-width: 28rem;
+
+    form div label {
+      font-size: 1.5rem;
     }
   }
 `;

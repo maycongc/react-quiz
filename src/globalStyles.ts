@@ -7,16 +7,19 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    font-size: 62.5%;
+  }
+
   body {
     background: #d4ebfc;
     color: #222;
 
     font-weight: 400;
-    font-size: 62.5%;
     font-family: 'Roboto', sans-serif;
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5, h6, strong {
     font-family: 'Poppins';
   }
 `;
