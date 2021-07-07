@@ -2,17 +2,20 @@ import styled from 'styled-components';
 
 export const VerificationWrapper = styled.main`
   display: flex;
+  flex-direction: column;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 
   align-items: center;
   justify-content: center;
 
-  gap: 50px;
+  padding: 1rem 1rem 2rem;
+  gap: 10px;
 
   aside {
+    order: -1;
     img {
-      width: 500px;
+      width: 240px;
     }
   }
 
@@ -43,6 +46,37 @@ export const VerificationWrapper = styled.main`
       button:first-child {
         background: #28bf56;
       }
+    }
+  }
+
+  @media (min-width: 400px) {
+    aside img {
+      width: 300px;
+    }
+  }
+
+  @media (min-width: 750px) {
+    flex-direction: row;
+    height: 100vh;
+    gap: 30px;
+
+    aside {
+      order: +1;
+      img {
+        width: 350px;
+      }
+    }
+  }
+
+  @media (min-width: 850px) {
+    aside img {
+      width: 400px;
+    }
+  }
+
+  @media (min-width: 950px) {
+    aside img {
+      width: 500px;
     }
   }
 `;
