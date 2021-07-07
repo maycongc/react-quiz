@@ -8,7 +8,8 @@ export const SectionWrapper = styled.section`
 
   width: fit-content;
   height: fit-content;
-  min-width: 300px;
+  width: 100%;
+  max-width: 300px;
 
   background: #f0f0f0f9;
 
@@ -41,13 +42,13 @@ export const SectionWrapper = styled.section`
     }
 
     h1 {
-      font-size: 2.1rem;
+      font-size: 1.6rem;
     }
 
     p {
       width: 100%;
       max-width: 200px;
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
   }
 
@@ -71,9 +72,10 @@ export const SectionWrapper = styled.section`
       background: #03d3fc;
       border: 1px solid #03d3fc;
 
-      font: 500 1rem 'Roboto';
+      font: 500 0.8rem 'Roboto';
       color: #f8f8f8;
 
+      padding: 0 1rem;
       border-radius: 8px;
 
       transition: filter 0.3s ease;
@@ -83,5 +85,25 @@ export const SectionWrapper = styled.section`
         filter: brightness(0.85);
       }
     }
+  }
+
+  @media (min-width: 375px) {
+    div {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    form button {
+      font: 500 0.9rem 'Roboto';
+    }
+  }
+
+  @media (min-width: 700px) {
+    min-width: 280px;
   }
 `;
