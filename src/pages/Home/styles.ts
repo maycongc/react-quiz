@@ -9,13 +9,13 @@ export const HomeWrapper = styled.main`
   align-items: center;
   justify-content: center;
 
-  padding: 0 2rem 2rem;
+  padding: 0 3.2rem 3.2rem;
 
   aside {
     display: flex;
     justify-content: center;
     img {
-      width: 280px;
+      width: 28rem;
     }
   }
 
@@ -23,8 +23,8 @@ export const HomeWrapper = styled.main`
     background: #28bf56;
     color: #fff;
     transition: all 0.3s ease;
-    font-size: 0.75rem;
-    border-radius: 8px;
+    font-size: 1.2rem;
+    border-radius: 0.8rem;
 
     &:hover {
       background: #28bf56;
@@ -34,17 +34,17 @@ export const HomeWrapper = styled.main`
 
   @media (min-width: 350px) {
     aside img {
-      width: 300px;
+      width: 30rem;
     }
   }
 
   @media (min-width: 500px) {
     aside img {
-      width: 360px;
+      width: 36rem;
     }
 
     .last-result {
-      font-size: 0.85rem;
+      font-size: 1.35rem;
     }
   }
 
@@ -56,13 +56,13 @@ export const HomeWrapper = styled.main`
     align-items: center;
 
     aside img {
-      width: 390px;
+      width: 39rem;
     }
   }
 
   @media (min-width: 900px) {
     aside img {
-      width: 550px;
+      width: 55rem;
     }
   }
 `;

@@ -9,18 +9,18 @@ export const VerificationWrapper = styled.main`
   align-items: center;
   justify-content: center;
 
-  padding: 1rem 1rem 2rem;
-  gap: 10px;
+  padding: 1.6rem 1.6rem 3.2rem;
+  gap: 1rem;
 
   aside {
     order: -1;
     img {
-      width: 240px;
+      width: 24rem;
     }
   }
 
   section {
-    min-height: 370px;
+    min-height: 37rem;
 
     .buttons {
       width: 100%;
@@ -32,14 +32,16 @@ export const VerificationWrapper = styled.main`
       button {
         background: #808080;
         color: #fff;
+        font-size: 1.3rem;
 
-        height: 45px;
-        padding: 0 15px;
+        height: 4.5rem;
+        padding: 0 1.5rem;
 
-        transition: filter 0.3s ease;
+        transition: all 0.3s ease;
 
         &:hover {
           filter: brightness(0.85);
+          transform: scale(1.03);
         }
       }
 
@@ -51,32 +53,36 @@ export const VerificationWrapper = styled.main`
 
   @media (min-width: 400px) {
     aside img {
-      width: 300px;
+      width: 30rem;
     }
   }
 
   @media (min-width: 750px) {
     flex-direction: row;
     height: 100vh;
-    gap: 30px;
+    gap: 3rem;
 
     aside {
       order: +1;
       img {
-        width: 350px;
+        width: 35rem;
       }
+    }
+
+    button {
+      font-size: 1.4rem;
     }
   }
 
   @media (min-width: 850px) {
     aside img {
-      width: 400px;
+      width: 40rem;
     }
   }
 
   @media (min-width: 950px) {
     aside img {
-      width: 500px;
+      width: 50rem;
     }
   }
 `;
