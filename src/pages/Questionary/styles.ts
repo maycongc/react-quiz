@@ -8,11 +8,11 @@ export const QuestionaryWrapper = styled.main`
     position: absolute;
     height: fit-content;
 
-    top: 80px;
-    left: 10px;
+    top: 8rem;
+    left: 1rem;
 
     img {
-      width: 600px;
+      width: 60rem;
       position: fixed;
     }
   }
@@ -25,22 +25,27 @@ export const QuestionaryWrapper = styled.main`
 
     align-items: center;
 
-    padding: 40px 20px;
+    padding: 4rem 2rem;
   }
 
   .finish {
-    width: 100px;
-    height: 50px;
-    margin: 30px 40px;
+    width: 10rem;
+    height: 5rem;
+    margin: 3rem 4rem;
+
     background: #3be06d;
     color: #f8f8f8;
-    font: 500 1rem 'Roboto';
+    box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+
+    font: 500 1.5rem 'Roboto';
 
     transition: all 0.3s ease;
 
     &:hover {
       background: #3be06d;
       filter: brightness(0.85);
+      transform: scale(1.04);
     }
   }
 `;
